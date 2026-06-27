@@ -1,0 +1,1544 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chirag Infosys | Computers, Networking & IT Support</title>
+  <meta name="description" content="Chirag Infosys is an Ahmedabad-based IT business providing computers, networking, repairs, security software, consulting, and annual maintenance support.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    :root {
+      --white: #ffffff;
+      --platinum: #f8f9fa;
+      --ink: #0a0915;
+      --carbon: #4b5563;
+      --muted: #9ca3af;
+      --rule: rgba(15, 23, 42, 0.08);
+      --crimson: #dc2626;
+      --crimson-deep: #991b1b;
+      --crimson-soft: #fef2f2;
+      --shadow: 0 24px 70px rgba(10, 9, 21, 0.04);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y proximity;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--white);
+      /* Subtle grid background pattern characteristic of Framer sites */
+      background-image: 
+        linear-gradient(to right, rgba(15, 23, 42, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    h1, h2, h3, .matrix-title, .brand, .top-bar, .nav-action, .button, .eyebrow, .mono-badge {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    body::selection {
+      background: var(--crimson);
+      color: var(--white);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    .site-header {
+      position: relative;
+      margin: 16px auto;
+      z-index: 40;
+      width: min(var(--max), calc(100% - 40px));
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      color: var(--ink);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    .nav-shell {
+      width: min(var(--max), calc(100% - 40px));
+      min-height: 78px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 182px;
+    }
+
+    .brand img {
+      max-height: 45px;
+      width: auto;
+      border-radius: 2px;
+      object-fit: contain;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 34px;
+      color: var(--carbon);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .desktop-nav a {
+      position: relative;
+      padding: 8px 0;
+      transition: color 150ms ease;
+    }
+
+    .desktop-nav a:hover {
+      color: var(--ink);
+    }
+
+    .desktop-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1.5px;
+      transform: scaleX(0);
+      transform-origin: right;
+      background: var(--crimson);
+      transition: transform 250ms cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .desktop-nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .nav-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 20px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 6px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-action:hover {
+      border-color: var(--crimson);
+      background: var(--crimson);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(220, 38, 38, 0.2);
+    }
+
+    main { overflow: clip; }
+
+    section { scroll-snap-align: start; }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 114px);
+      color: var(--white);
+      padding: 96px 0 76px;
+      background: var(--ink); /* Fallback */
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.9fr);
+      gap: 56px;
+      align-items: center;
+    }
+
+    .mono-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 16px;
+      background: rgba(220, 38, 38, 0.1);
+      border: 1px solid rgba(220, 38, 38, 0.25);
+      border-radius: 9999px;
+      color: #ff4d4d;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      max-width: 810px;
+      margin: 26px 0 24px;
+      font-size: clamp(48px, 6.5vw, 84px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 30%, #e2e8f0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: clamp(17px, 1.7vw, 21px);
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border: 1px solid var(--ink);
+      background: var(--white);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 8px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .button:hover { 
+      transform: translateY(-2px); 
+    }
+
+    .button.primary {
+      border-color: var(--crimson);
+      background: var(--crimson);
+      color: var(--white);
+      box-shadow: 0 10px 30px rgba(220, 38, 38, 0.2);
+    }
+
+    .button.primary:hover {
+      border-color: var(--crimson-deep);
+      background: var(--crimson-deep);
+      box-shadow: 0 12px 35px rgba(220, 38, 38, 0.4);
+    }
+
+    .button.inverse {
+      border-color: var(--white);
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    .button.inverse:hover {
+      background: #f1f5f9;
+      border-color: #f1f5f9;
+    }
+
+    .button.ghost-dark {
+      border-color: rgba(255, 255, 255, 0.36);
+      background: transparent;
+      color: var(--white);
+    }
+
+    .matrix-card {
+      position: relative;
+      min-height: 520px;
+      padding: 36px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      color: var(--white);
+      box-shadow: 
+        0 30px 70px rgba(0, 0, 0, 0.5),
+        0 0 100px rgba(220, 38, 38, 0.15); /* Soft crimson tech glow */
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .matrix-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 22px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .status-dot {
+      width: 11px;
+      height: 11px;
+      margin-top: 6px;
+      background: var(--crimson);
+      box-shadow: 0 0 0 8px rgba(155, 6, 27, 0.18);
+    }
+
+    .matrix-kicker {
+      margin: 0 0 8px;
+      color: rgba(255, 255, 255, 0.58);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .matrix-title {
+      margin: 0;
+      max-width: 260px;
+      font-size: 27px;
+      line-height: 1.05;
+      font-weight: 820;
+    }
+
+    .matrix-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      margin-top: 26px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .metric {
+      min-height: 118px;
+      padding: 18px;
+      background: rgba(10, 9, 21, 0.48);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--white);
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 12px;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .matrix-feed {
+      display: grid;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .feed-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.74);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .feed-row b {
+      color: var(--white);
+      font-weight: 800;
+    }
+
+    .section { padding: 110px 0; }
+
+    .section.platinum { background: var(--platinum); }
+
+    .section-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.55fr);
+      gap: 46px;
+      align-items: end;
+      margin-bottom: 48px;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--crimson);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(34px, 4.8vw, 64px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      font-weight: 850;
+    }
+
+    .section-note {
+      margin: 0;
+      color: var(--carbon);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .solution-card {
+      position: relative;
+      min-height: 280px;
+      padding: 40px 32px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(10, 9, 21, 0.015);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      overflow: hidden;
+    }
+
+    .solution-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--crimson);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .solution-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .solution-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(10, 9, 21, 0.06);
+      border-color: rgba(220, 38, 38, 0.15);
+    }
+
+    .card-index {
+      display: inline-flex;
+      margin-bottom: 38px;
+      color: var(--crimson);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 11px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .solution-card h3 {
+      margin: 0 0 16px;
+      font-size: 23px;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .solution-card p {
+      margin: 0;
+      color: var(--carbon);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .ledger-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 0.65fr) minmax(360px, 1fr);
+      gap: 58px;
+      align-items: start;
+    }
+
+    .ledger-intro {
+      position: sticky;
+      top: 112px;
+      padding-left: 22px;
+      border-left: 5px solid var(--crimson);
+    }
+
+    .ledger-intro p {
+      margin: 20px 0 0;
+      color: var(--carbon);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .ledger-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(10, 9, 21, 0.015);
+      background: var(--white);
+    }
+
+    .ledger-table tr { 
+      transition: background 150ms ease;
+    }
+    
+    .ledger-table tr:not(:last-child) td,
+    .ledger-table tr:not(:last-child) th {
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .ledger-table tr:nth-child(even) {
+      background: var(--platinum);
+    }
+    
+    .ledger-table tr:hover {
+      background: rgba(220, 38, 38, 0.02);
+    }
+
+    .ledger-table th,
+    .ledger-table td {
+      padding: 24px 28px;
+      vertical-align: middle;
+      text-align: left;
+    }
+
+    .ledger-table th {
+      width: 34%;
+      color: var(--ink);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-right: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .ledger-table td {
+      color: var(--carbon);
+      font-size: 15px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .gateway {
+      position: relative;
+      padding: 114px 0;
+      background: #090c15;
+      color: var(--white);
+      isolation: isolate;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .gateway::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 50%, rgba(220, 38, 38, 0.16), transparent 40%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: auto, 48px 48px, 48px 48px;
+      opacity: 0.9;
+      z-index: -1;
+    }
+
+    .gateway-grid {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.48fr);
+      gap: 48px;
+      align-items: end;
+    }
+
+    .gateway h2 {
+      max-width: 760px;
+      color: var(--white);
+    }
+
+    .gateway p {
+      max-width: 700px;
+      margin: 24px 0 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .gateway-actions {
+      display: grid;
+      gap: 14px;
+    }
+
+    .footer {
+      padding: 80px 0 40px;
+      background: #090c15;
+      color: rgba(255, 255, 255, 0.6);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-grid {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(280px, 1.1fr) minmax(160px, 0.42fr) minmax(280px, 0.76fr);
+      gap: 52px;
+      padding-bottom: 42px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-logo {
+      width: 186px;
+      max-height: 45px;
+      object-fit: contain;
+      object-position: left center;
+      margin-bottom: 22px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+
+    .footer p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.75;
+      font-size: 14px;
+    }
+
+    .footer h3 {
+      margin: 0 0 18px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+
+    .footer-links,
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 14px;
+    }
+
+    .footer-links a,
+    .contact-list a {
+      transition: color 150ms ease;
+    }
+
+    .footer-links a:hover,
+    .contact-list a:hover {
+      color: var(--white);
+    }
+
+    .footer-meta {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 24px auto 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: rgba(255, 255, 255, 0.4);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 980px) {
+      .nav-shell { min-height: 70px; }
+
+      .desktop-nav,
+      .nav-action { display: none; }
+
+      .hero {
+        min-height: auto;
+        padding: 74px 0 60px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.98)),
+          url("wallpaper 1.jpg") center top / cover no-repeat;
+      }
+
+      .hero-grid,
+      .section-heading,
+      .ledger-wrap,
+      .gateway-grid,
+      .footer-grid { grid-template-columns: 1fr; }
+
+      .matrix-card { min-height: 430px; }
+
+      .solutions-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .ledger-intro { position: static; }
+    }
+
+    @media (max-width: 640px) {
+      html { scroll-snap-type: none; }
+
+      .nav-shell,
+      .hero-grid,
+      .section-inner,
+      .gateway-grid,
+      .footer-grid,
+      .footer-meta { width: min(100% - 28px, var(--max)); }
+
+      .brand img,
+      .footer-logo { max-height: 38px; }
+
+      .hero { padding: 52px 0; }
+
+      .hero h1 { font-size: clamp(42px, 13vw, 58px); }
+
+      .hero-actions,
+      .footer-meta { flex-direction: column; }
+
+      .button { width: 100%; }
+
+      .matrix-card {
+        min-height: 0;
+        padding: 18px;
+      }
+
+      .matrix-top { display: grid; }
+
+      .matrix-metrics { grid-template-columns: 1fr; }
+
+      .section,
+      .gateway { padding: 72px 0; }
+
+      .solutions-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .solution-card {
+        min-height: auto;
+        padding: 28px;
+      }
+
+      .card-index { margin-bottom: 28px; }
+
+      .ledger-table,
+      .ledger-table tbody,
+      .ledger-table tr,
+      .ledger-table th,
+      .ledger-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .ledger-table th { padding: 22px 0 6px; }
+
+      .ledger-table td { padding: 0 0 22px; }
+    }
+
+    /* --- NEW CUSTOM STYLES --- */
+    /* Top Utility Bar */
+    .top-bar {
+      background: #05040a;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: "SFMono-Regular", Consolas, monospace;
+    }
+    .top-bar-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .top-bar-contacts {
+      display: flex;
+      gap: 20px;
+    }
+    .top-bar a {
+      color: rgba(255, 255, 255, 0.75);
+      transition: color 180ms ease;
+    }
+    .top-bar a:hover {
+      color: var(--white);
+    }
+
+    /* Floating Contact FAB */
+    .floating-contact-panel {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .floating-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--crimson);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 30px rgba(220, 38, 38, 0.35);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .floating-btn:hover {
+      transform: translateY(-4px) scale(1.08);
+      background: var(--crimson-deep);
+      box-shadow: 0 12px 35px rgba(220, 38, 38, 0.5);
+    }
+    .floating-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    /* Hero Video Background Adjustments */
+    .hero-video-container {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    .hero-video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.15), transparent 45%),
+        linear-gradient(135deg, rgba(9, 13, 22, 0.96) 0%, rgba(9, 13, 22, 0.85) 60%, rgba(9, 13, 22, 0.6) 100%);
+      z-index: 1;
+    }
+    /* Subtly repeating dotted grid for an enterprise-tech feel */
+    .hero-video-overlay::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: 0.85;
+    }
+
+    /* Glassmorphism for Matrix Card */
+    .hero .matrix-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 
+        0 30px 70px rgba(0, 0, 0, 0.5),
+        0 0 100px rgba(220, 38, 38, 0.15); /* Soft crimson tech glow */
+      border-radius: 16px;
+      isolation: auto;
+    }
+    .hero .matrix-card::before {
+      background: 
+        linear-gradient(135deg, rgba(10, 9, 21, 0.5), rgba(10, 9, 21, 0.3)),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: auto, 42px 42px, 42px 42px;
+    }
+    .hero .matrix-card .feed-row {
+      border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
+    .hero .matrix-card .matrix-top {
+      border-bottom-color: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Brand Marquee Section */
+    .brand-marquee-section {
+      padding: 80px 0 70px;
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+      overflow: hidden;
+    }
+    .brand-marquee-section h2 {
+      font-size: clamp(24px, 3.5vw, 38px);
+      text-align: center;
+      margin-bottom: 48px;
+      font-weight: 850;
+      color: var(--ink);
+      letter-spacing: -0.5px;
+    }
+    .marquee-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .marquee-container {
+      display: flex;
+      overflow: hidden;
+      user-select: none;
+      width: 100%;
+      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    }
+    .marquee-content {
+      display: flex;
+      flex-shrink: 0;
+      gap: 24px;
+      padding: 10px 0;
+      min-width: 100%;
+    }
+    .marquee-content.left {
+      animation: scroll-left 35s linear infinite;
+    }
+    .marquee-content.right {
+      animation: scroll-right 35s linear infinite;
+    }
+    .marquee-container:hover .marquee-content {
+      animation-play-state: paused;
+    }
+
+    .logo-card {
+      flex-shrink: 0;
+      width: 160px;
+      height: 76px;
+      background: var(--platinum);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      animation: float-logo 4s ease-in-out infinite;
+    }
+    .logo-card svg {
+      width: 100%;
+      height: 100%;
+      filter: grayscale(1) opacity(0.55);
+      transition: all 0.3s ease;
+    }
+    .logo-card:hover {
+      transform: translateY(-8px) scale(1.06) !important;
+      background: var(--white);
+      border-color: var(--crimson);
+      box-shadow: 0 15px 30px rgba(220, 38, 38, 0.12);
+    }
+    .logo-card:hover svg {
+      filter: grayscale(0) opacity(1);
+    }
+
+    /* Floater Animation delays */
+    .logo-card:nth-child(2n) { animation-delay: -1.3s; }
+    .logo-card:nth-child(3n) { animation-delay: -2.7s; }
+    .logo-card:nth-child(4n) { animation-delay: -0.7s; }
+    .logo-card:nth-child(5n) { animation-delay: -3.3s; }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-100% - 24px)); }
+    }
+    @keyframes scroll-right {
+      0% { transform: translateX(calc(-100% - 24px)); }
+      100% { transform: translateX(0); }
+    }
+    @keyframes float-logo {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* Extra Media Queries for responsiveness */
+    @media (max-width: 980px) {
+      .hero {
+        background: transparent;
+        padding: 60px 0;
+      }
+      .hero-video-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(10, 9, 21, 0.96) 0%,
+          rgba(10, 9, 21, 0.88) 70%,
+          rgba(10, 9, 21, 0.75) 100%
+        );
+      }
+      .top-bar-inner {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Utility Bar -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div>📍 Paldi, Ahmedabad, Gujarat</div>
+      <div class="top-bar-contacts">
+        <a href="tel:9825358858">📞 +91 98253 58858</a>
+        <a href="mailto:chiragin@hotmail.com">✉️ chiragin@hotmail.com</a>
+        <a href="mailto:chiraginfos@gmail.com">✉️ chiraginfos@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="#overview" aria-label="Chirag Infosys home">
+        <img src="daddy new logo.png" alt="Chirag Infosys logo">
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#overview">Overview</a>
+        <a href="#solutions">Services</a>
+        <a href="#specifications">Business Details</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-action" href="tel:9825358858">Call 98253 58858</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="overview">
+      <!-- Full-screen Hero Video Background -->
+      <div class="hero-video-container">
+        <video src="214705.mp4" poster="wallpaper 1.jpg" autoplay muted loop playsinline></video>
+        <div class="hero-video-overlay"></div>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <span class="mono-badge">Established 2003 | Ahmedabad IT Solutions</span>
+          <h1>Reliable computers, networking, repairs, and IT support for business.</h1>
+          <p class="hero-copy">Chirag Infosys helps offices and businesses choose the right computers, set up secure networks, maintain systems, and solve hardware issues with practical support backed by more than 20 years of experience.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="tel:9825358858">Call +91 98253 58858</a>
+            <a class="button inverse" href="mailto:chiragin@hotmail.com">Email Inquiry</a>
+          </div>
+        </div>
+
+        <aside class="matrix-card" aria-label="Service overview">
+          <!-- Video removed from card to avoid duplicate download & play -->
+          <div class="matrix-top">
+            <div>
+              <p class="matrix-kicker">Service Overview</p>
+              <p class="matrix-title">One trusted contact for office systems, network setup, security, repairs, and maintenance.</p>
+            </div>
+            <span class="status-dot" aria-hidden="true"></span>
+          </div>
+          <div class="matrix-metrics">
+            <div class="metric">
+              <strong>20+</strong>
+              <span>Years in business</span>
+            </div>
+            <div class="metric">
+              <strong>06</strong>
+              <span>Main service areas</span>
+            </div>
+            <div class="metric">
+              <strong>24h</strong>
+              <span>Support focus</span>
+            </div>
+            <div class="metric">
+              <strong>GJ</strong>
+              <span>Gujarat business base</span>
+            </div>
+          </div>
+          <div class="matrix-feed">
+            <div class="feed-row"><span>Computer supply</span><b>Available</b></div>
+            <div class="feed-row"><span>Network setup</span><b>Secure</b></div>
+            <div class="feed-row"><span>AMC support</span><b>Ready</b></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Infinite Brand Logo Marquee Section -->
+    <section class="brand-marquee-section">
+      <h2>Leading Brands We Service &amp; Support</h2>
+      <div class="marquee-wrapper">
+        <!-- Row 1: Slides Left -->
+        <div class="marquee-container">
+          <div class="marquee-content left">
+            <!-- Intel -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 25C10 13.95 50.3 5 100 5C100 5 107 10 95 12C55 16 22 21 22 28C22 35 60 38 100 38C105 38 112 43 95 45C50.3 45 10 36.05 10 25Z" fill="none" stroke="#0071c5" stroke-width="2.5"/>
+                <text x="56" y="32" font-family="'Segoe UI', sans-serif" font-weight="900" font-size="20" fill="#0071c5" text-anchor="middle">intel</text>
+              </svg>
+            </div>
+            <!-- Gigabyte -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="60" y="32" font-family="'Arial Black', sans-serif" font-weight="900" font-size="16" font-style="italic" fill="#005b9f" text-anchor="middle" letter-spacing="-0.5">GIGABYTE</text>
+              </svg>
+            </div>
+            <!-- Seagate -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="25" r="16" stroke="#4da64d" stroke-width="3" fill="none"/>
+                <path d="M24 9C32.8 9 40 16.2 40 25C40 33.8 32.8 41 24 41C15.2 41 12 30 18 24C22 20 28 22 26 27" fill="none" stroke="#4da64d" stroke-width="2.5" stroke-linecap="round"/>
+                <text x="78" y="31" font-family="sans-serif" font-weight="bold" font-size="14" fill="#333333" text-anchor="middle">Seagate</text>
+              </svg>
+            </div>
+            <!-- WD -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="25" y="8" width="70" height="34" rx="8" fill="#005696"/>
+                <text x="60" y="33" font-family="'Arial Black', sans-serif" font-weight="900" font-size="20" fill="#ffffff" text-anchor="middle">WD</text>
+              </svg>
+            </div>
+            <!-- iBall -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="15" y="10" width="30" height="30" rx="6" fill="#e31e24"/>
+                <text x="30" y="32" font-family="sans-serif" font-weight="bold" font-size="22" fill="#ffffff" text-anchor="middle">i</text>
+                <text x="75" y="31" font-family="sans-serif" font-weight="bold" font-size="20" fill="#333333" text-anchor="middle">ball</text>
+              </svg>
+            </div>
+            <!-- TVS Electronics -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="35" y="34" font-family="'Arial Black', sans-serif" font-weight="900" font-size="24" font-style="italic" fill="#0a4696">TVS</text>
+                <text x="85" y="24" font-family="sans-serif" font-weight="bold" font-size="7" fill="#e31e24" text-anchor="middle">ELECTRONICS</text>
+              </svg>
+            </div>
+            <!-- Logitech -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="60" y="34" font-family="'Inter', sans-serif" font-weight="900" font-size="26" fill="#00b8e6" text-anchor="middle" letter-spacing="-1.5">logi</text>
+              </svg>
+            </div>
+            <!-- Dell -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="25" r="21" stroke="#0076c0" stroke-width="4.5" fill="none"/>
+                <text x="60" y="32" font-family="'Arial Black', sans-serif" font-weight="900" font-size="14" fill="#0076c0" text-anchor="middle">D<tspan rotate="-15" dy="-2">E</tspan>LL</text>
+              </svg>
+            </div>
+            <!-- Lenovo -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="15" y="10" width="90" height="30" rx="3" fill="#e21a22" transform="skewX(-10)"/>
+                <text x="60" y="31" font-family="sans-serif" font-weight="bold" font-size="14" fill="#ffffff" text-anchor="middle" transform="skewX(-10)">lenovo</text>
+              </svg>
+            </div>
+            <!-- LG -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="25" r="21" fill="#a50034"/>
+                <path d="M60 10 A15 15 0 1 0 75 25 L60 25" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <path d="M54 17 L54 30 L65 30" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <circle cx="57" cy="21" r="2.5" fill="#ffffff"/>
+              </svg>
+            </div>
+          </div>
+          
+          <!-- Duplicate contents for seamless looping -->
+          <div class="marquee-content left" aria-hidden="true">
+            <!-- Intel -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 25C10 13.95 50.3 5 100 5C100 5 107 10 95 12C55 16 22 21 22 28C22 35 60 38 100 38C105 38 112 43 95 45C50.3 45 10 36.05 10 25Z" fill="none" stroke="#0071c5" stroke-width="2.5"/>
+                <text x="56" y="32" font-family="'Segoe UI', sans-serif" font-weight="900" font-size="20" fill="#0071c5" text-anchor="middle">intel</text>
+              </svg>
+            </div>
+            <!-- Gigabyte -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="60" y="32" font-family="'Arial Black', sans-serif" font-weight="900" font-size="16" font-style="italic" fill="#005b9f" text-anchor="middle" letter-spacing="-0.5">GIGABYTE</text>
+              </svg>
+            </div>
+            <!-- Seagate -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="25" r="16" stroke="#4da64d" stroke-width="3" fill="none"/>
+                <path d="M24 9C32.8 9 40 16.2 40 25C40 33.8 32.8 41 24 41C15.2 41 12 30 18 24C22 20 28 22 26 27" fill="none" stroke="#4da64d" stroke-width="2.5" stroke-linecap="round"/>
+                <text x="78" y="31" font-family="sans-serif" font-weight="bold" font-size="14" fill="#333333" text-anchor="middle">Seagate</text>
+              </svg>
+            </div>
+            <!-- WD -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="25" y="8" width="70" height="34" rx="8" fill="#005696"/>
+                <text x="60" y="33" font-family="'Arial Black', sans-serif" font-weight="900" font-size="20" fill="#ffffff" text-anchor="middle">WD</text>
+              </svg>
+            </div>
+            <!-- iBall -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="15" y="10" width="30" height="30" rx="6" fill="#e31e24"/>
+                <text x="30" y="32" font-family="sans-serif" font-weight="bold" font-size="22" fill="#ffffff" text-anchor="middle">i</text>
+                <text x="75" y="31" font-family="sans-serif" font-weight="bold" font-size="20" fill="#333333" text-anchor="middle">ball</text>
+              </svg>
+            </div>
+            <!-- TVS Electronics -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="35" y="34" font-family="'Arial Black', sans-serif" font-weight="900" font-size="24" font-style="italic" fill="#0a4696">TVS</text>
+                <text x="85" y="24" font-family="sans-serif" font-weight="bold" font-size="7" fill="#e31e24" text-anchor="middle">ELECTRONICS</text>
+              </svg>
+            </div>
+            <!-- Logitech -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="60" y="34" font-family="'Inter', sans-serif" font-weight="900" font-size="26" fill="#00b8e6" text-anchor="middle" letter-spacing="-1.5">logi</text>
+              </svg>
+            </div>
+            <!-- Dell -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="25" r="21" stroke="#0076c0" stroke-width="4.5" fill="none"/>
+                <text x="60" y="32" font-family="'Arial Black', sans-serif" font-weight="900" font-size="14" fill="#0076c0" text-anchor="middle">D<tspan rotate="-15" dy="-2">E</tspan>LL</text>
+              </svg>
+            </div>
+            <!-- Lenovo -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="15" y="10" width="90" height="30" rx="3" fill="#e21a22" transform="skewX(-10)"/>
+                <text x="60" y="31" font-family="sans-serif" font-weight="bold" font-size="14" fill="#ffffff" text-anchor="middle" transform="skewX(-10)">lenovo</text>
+              </svg>
+            </div>
+            <!-- LG -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="25" r="21" fill="#a50034"/>
+                <path d="M60 10 A15 15 0 1 0 75 25 L60 25" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <path d="M54 17 L54 30 L65 30" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <circle cx="57" cy="21" r="2.5" fill="#ffffff"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Slides Right -->
+        <div class="marquee-container">
+          <div class="marquee-content right">
+            <!-- HP -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="25" r="21" fill="#0096d6"/>
+                <text x="59" y="31" font-family="'Georgia', serif" font-size="25" font-style="italic" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="skewX(-12)">hp</text>
+              </svg>
+            </div>
+            <!-- Canon -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="60" y="33" font-family="'Georgia', serif" font-size="24" font-weight="900" fill="#c41230" text-anchor="middle" letter-spacing="0.5">Canon</text>
+              </svg>
+            </div>
+            <!-- TP-Link -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="30" cy="25" r="18" fill="#18b4b9"/>
+                <path d="M34 18 A9 9 0 1 0 34 32 A9 9 0 0 0 38 26 L32 26 A3.5 3.5 0 1 1 30 20.5 A3.5 3.5 0 0 1 32 23 L38 23 A9 9 0 0 0 34 18 Z" fill="#ffffff"/>
+                <path d="M41 16 L35 22 H39 V26 L43 22 H41 Z" fill="#ffffff"/>
+                <text x="82" y="31" font-family="sans-serif" font-weight="bold" font-size="13" fill="#18b4b9" text-anchor="middle">tp-link</text>
+              </svg>
+            </div>
+            <!-- D-Link -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="60" y="33" font-family="'Arial Black', sans-serif" font-weight="900" font-size="20" fill="#0b58a8" text-anchor="middle">D-Link</text>
+              </svg>
+            </div>
+            <!-- Hikvision -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="60" y="32" font-family="'Arial Black', sans-serif" font-weight="900" font-size="15" fill="#e21a22" text-anchor="middle" letter-spacing="0.2">HIKVISION</text>
+              </svg>
+            </div>
+            <!-- Dahua -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 12 L10 32 H20 L24 22 H15 Z" fill="#e21a22"/>
+                <text x="68" y="33" font-family="sans-serif" font-weight="900" font-size="22" fill="#000000" text-anchor="middle">alhua</text>
+              </svg>
+            </div>
+            <!-- Quick Heal -->
+            <div class="logo-card">
+              <svg viewBox="0 0 140 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="10" width="130" height="30" rx="5" fill="#f37023"/>
+                <text x="70" y="30" font-family="sans-serif" font-weight="bold" font-size="14" fill="#ffffff" text-anchor="middle">Quick Heal</text>
+              </svg>
+            </div>
+            <!-- Kaspersky -->
+            <div class="logo-card">
+              <svg viewBox="0 0 140 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="70" y="32" font-family="'Arial Black', sans-serif" font-weight="900" font-size="14" fill="#006d55" text-anchor="middle" letter-spacing="0.5">KASPERSKY</text>
+              </svg>
+            </div>
+            <!-- Tally -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="60" y="34" font-family="'Brush Script MT', 'Georgia', cursive, serif" font-size="26" font-weight="bold" fill="#000000" text-anchor="middle">Tally</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Duplicate contents for seamless looping -->
+          <div class="marquee-content right" aria-hidden="true">
+            <!-- HP -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="25" r="21" fill="#0096d6"/>
+                <text x="59" y="31" font-family="'Georgia', serif" font-size="25" font-style="italic" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="skewX(-12)">hp</text>
+              </svg>
+            </div>
+            <!-- Canon -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="60" y="33" font-family="'Georgia', serif" font-size="24" font-weight="900" fill="#c41230" text-anchor="middle" letter-spacing="0.5">Canon</text>
+              </svg>
+            </div>
+            <!-- TP-Link -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="30" cy="25" r="18" fill="#18b4b9"/>
+                <path d="M34 18 A9 9 0 1 0 34 32 A9 9 0 0 0 38 26 L32 26 A3.5 3.5 0 1 1 30 20.5 A3.5 3.5 0 0 1 32 23 L38 23 A9 9 0 0 0 34 18 Z" fill="#ffffff"/>
+                <path d="M41 16 L35 22 H39 V26 L43 22 H41 Z" fill="#ffffff"/>
+                <text x="82" y="31" font-family="sans-serif" font-weight="bold" font-size="13" fill="#18b4b9" text-anchor="middle">tp-link</text>
+              </svg>
+            </div>
+            <!-- D-Link -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="60" y="33" font-family="'Arial Black', sans-serif" font-weight="900" font-size="20" fill="#0b58a8" text-anchor="middle">D-Link</text>
+              </svg>
+            </div>
+            <!-- Hikvision -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="60" y="32" font-family="'Arial Black', sans-serif" font-weight="900" font-size="15" fill="#e21a22" text-anchor="middle" letter-spacing="0.2">HIKVISION</text>
+              </svg>
+            </div>
+            <!-- Dahua -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 12 L10 32 H20 L24 22 H15 Z" fill="#e21a22"/>
+                <text x="68" y="33" font-family="sans-serif" font-weight="900" font-size="22" fill="#000000" text-anchor="middle">alhua</text>
+              </svg>
+            </div>
+            <!-- Quick Heal -->
+            <div class="logo-card">
+              <svg viewBox="0 0 140 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="10" width="130" height="30" rx="5" fill="#f37023"/>
+                <text x="70" y="30" font-family="sans-serif" font-weight="bold" font-size="14" fill="#ffffff" text-anchor="middle">Quick Heal</text>
+              </svg>
+            </div>
+            <!-- Kaspersky -->
+            <div class="logo-card">
+              <svg viewBox="0 0 140 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="70" y="32" font-family="'Arial Black', sans-serif" font-weight="900" font-size="14" fill="#006d55" text-anchor="middle" letter-spacing="0.5">KASPERSKY</text>
+              </svg>
+            </div>
+            <!-- Tally -->
+            <div class="logo-card">
+              <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="60" y="34" font-family="'Brush Script MT', 'Georgia', cursive, serif" font-size="26" font-weight="bold" fill="#000000" text-anchor="middle">Tally</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section platinum" id="solutions">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Our Services</p>
+            <h2>Complete IT help for offices, shops, and growing companies.</h2>
+          </div>
+          <p class="section-note">We keep the work simple and dependable: supply the right machines, set them up properly, protect them, repair them when needed, and maintain them over time.</p>
+        </div>
+
+        <div class="solutions-grid">
+          <article class="solution-card">
+            <span class="card-index">01 // Service</span>
+            <h3>Computers &amp; Office Hardware</h3>
+            <p>Business laptops, desktops, workstations, printers, and related office hardware from trusted brands.</p>
+          </article>
+          <article class="solution-card">
+            <span class="card-index">02 // Service</span>
+            <h3>Networking Setup</h3>
+            <p>Office network planning, switches, routers, firewalls, cabling guidance, and secure local network configuration.</p>
+          </article>
+          <article class="solution-card">
+            <span class="card-index">03 // Service</span>
+            <h3>Repairs &amp; Upgrades</h3>
+            <p>Hardware diagnosis, computer repairs, part replacement, performance upgrades, and practical device restoration.</p>
+          </article>
+          <article class="solution-card">
+            <span class="card-index">04 // Service</span>
+            <h3>Security &amp; Software</h3>
+            <p>Antivirus installation, licensed software support, operating system setup, data safety guidance, and basic security hardening.</p>
+          </article>
+          <article class="solution-card">
+            <span class="card-index">05 // Service</span>
+            <h3>Annual Maintenance</h3>
+            <p>AMC plans for offices that want regular support, faster issue handling, and fewer unexpected system problems.</p>
+          </article>
+          <article class="solution-card">
+            <span class="card-index">06 // Service</span>
+            <h3>IT Consulting</h3>
+            <p>Simple advice on what to buy, how to upgrade, how to plan office systems, and how to match hardware with business needs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="specifications">
+      <div class="section-inner ledger-wrap">
+        <div class="ledger-intro">
+          <p class="eyebrow">Business Details</p>
+          <h2>Local experience with clear business information.</h2>
+          <p>Chirag Infosys is led directly by its founder, with long-standing experience in computer supply, service, and support for business clients.</p>
+        </div>
+
+        <table class="ledger-table" aria-label="Chirag Infosys business details">
+          <tbody>
+            <tr>
+              <th>Business Name</th>
+              <td>Chirag Infosys (Proprietorship Firm)</td>
+            </tr>
+            <tr>
+              <th>Owner</th>
+              <td>Mr. Chirag Shah, Founder &amp; Principal IT Consultant</td>
+            </tr>
+            <tr>
+              <th>Started In</th>
+              <td>Serving customers continuously since 2003</td>
+            </tr>
+            <tr>
+              <th>Brands We Work With</th>
+              <td>HP, Dell, Lenovo, Acer, ASUS, and leading enterprise networking platforms</td>
+            </tr>
+            <tr>
+              <th>Address</th>
+              <td>Door No. 3, Yashovijay Flat, Opposite Ajay Restaurant, Near Anandnagar Bus Stop, Bhattha, Paldi, Ahmedabad, Gujarat - 380007</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="gateway" id="contact">
+      <div class="gateway-grid">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Talk to us for business IT support.</h2>
+          <p>Connect with Chirag Infosys for computer purchases, networking work, repairs, software support, annual maintenance, or guidance before upgrading your office systems.</p>
+        </div>
+        <div class="gateway-actions">
+          <a class="button inverse" href="#footer-contact">Contact Details</a>
+          <a class="button ghost-dark" href="https://jsdl.in/DT-1111VPYBGW" target="_blank" rel="noopener">View JustDial Profile</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="daddy new logo.png" alt="Chirag Infosys logo">
+        <p>Chirag Infosys is an Ahmedabad-based IT business supporting computer sales, office networking, repairs, software setup, consulting, and annual maintenance since 2003.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul class="footer-links">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#solutions">Services</a></li>
+          <li><a href="#specifications">Business Details</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div id="footer-contact">
+        <h3>Contact Details</h3>
+        <ul class="contact-list">
+          <li>Phone: <a href="tel:9825358858"><b>+91 98253 58858</b></a></li>
+          <li>Email: <br>
+            <a href="mailto:chiragin@hotmail.com"><b>chiragin@hotmail.com</b></a><br>
+            <a href="mailto:chiraginfos@gmail.com"><b>chiraginfos@gmail.com</b></a>
+          </li>
+          <li>Door No. 3, Yashovijay Flat, Opposite Ajay Restaurant, Near Anandnagar Bus Stop, Bhattha, Paldi, Ahmedabad, Gujarat - 380007</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <span>&copy; 2026 Chirag Infosys. Business IT Support Active.</span>
+      <span>Ahmedabad | Gujarat | India</span>
+    </div>
+  </footer>
+
+  <!-- Floating Contact Button -->
+  <div class="floating-contact-panel">
+    <!-- Call FAB -->
+    <a class="floating-btn" href="tel:9825358858" aria-label="Call Chirag Infosys" title="Call Us">
+      <svg viewBox="0 0 24 24">
+        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.01-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+      </svg>
+    </a>
+  </div>
+</body>
+</html>
